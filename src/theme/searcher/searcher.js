@@ -316,7 +316,7 @@ window.search = window.search || {};
     
     // Eventhandler for keyevents on `document`
     function globalKeyHandler(e) {
-        if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey || e.target.type === 'textarea' || e.target.type === 'text') { return; }
+        if (e.altKey || e.metaKey || e.shiftKey || e.target.type === 'textarea' || e.target.type === 'text') { return; }
 
         if (e.keyCode === ESCAPE_KEYCODE) {
             e.preventDefault();
@@ -328,7 +328,7 @@ window.search = window.search || {};
             }
             showSearch(false);
             marker.unmark();
-        } else if (!hasFocus() && e.keyCode === SEARCH_HOTKEY_KEYCODE) {
+        } else if (!hasFocus() &&  e.ctrlKey && e.keyCode === SEARCH_HOTKEY_KEYCODE ) {
             e.preventDefault();
             showSearch(true);
             window.scrollTo(0, 0);
